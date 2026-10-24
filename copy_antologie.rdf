@@ -1,0 +1,390 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3/"
+     xml:base="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:untitled-ontology-3="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#aPrerequis -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#aPrerequis">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Cours"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Cours"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#contientCours -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#contientCours">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Module"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Cours"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#contientModule -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#contientModule">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Formation"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Module"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#developpeCompetence -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#developpeCompetence">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Cours"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Competence"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#enseigne -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#enseigne">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Enseignant"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Cours"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#obtientCertification -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#obtientCertification">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Etudiant"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Certification"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#passeEvaluation -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#passeEvaluation">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Etudiant"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Evaluation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#suitFormation -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#suitFormation">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Etudiant"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Formation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#utiliseRessource -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#utiliseRessource">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Cours"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#RessourcePedagogique"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#valideCours -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#valideCours">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Etudiant"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Cours"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#nom -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#nom">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Personne"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#note -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#note">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Evaluation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#titre -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#titre">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Cours"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Certification -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Certification"/>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Competence -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Competence"/>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Cours -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Cours"/>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Document -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Document">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#RessourcePedagogique"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Enseignant -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Enseignant">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Personne"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Etudiant"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Etudiant -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Etudiant">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Personne"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#suitFormation"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Formation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#valideCours"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Cours"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#suitFormation"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Formation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Evaluation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Evaluation"/>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Exercice -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Exercice">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#RessourcePedagogique"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Formation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Formation"/>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Module -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Module"/>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#ParcoursApprentissage -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#ParcoursApprentissage"/>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Personne -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Personne"/>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Prerequis -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Prerequis"/>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#ProgrammePedagogique -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#ProgrammePedagogique"/>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#RessourcePedagogique -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#RessourcePedagogique"/>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Video -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Video">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#RessourcePedagogique"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Algorithmique -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Algorithmique">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Cours"/>
+        <untitled-ontology-3:titre>Algorithmique</untitled-ontology-3:titre>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Amine -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Amine">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Etudiant"/>
+        <untitled-ontology-3:passeEvaluation rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#ExamenAlgorithmique"/>
+        <untitled-ontology-3:suitFormation rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#LicenceInformatique"/>
+        <untitled-ontology-3:valideCours rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Algorithmique"/>
+        <untitled-ontology-3:nom>Amine</untitled-ontology-3:nom>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#CertificationProgrammation -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#CertificationProgrammation">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Certification"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#CompetenceProgrammation -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#CompetenceProgrammation">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Competence"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#ExamenAlgorithmique -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#ExamenAlgorithmique">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Evaluation"/>
+        <untitled-ontology-3:note rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15</untitled-ontology-3:note>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Khalil -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Khalil">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Enseignant"/>
+        <untitled-ontology-3:enseigne rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Algorithmique"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#LicenceInformatique -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#LicenceInformatique">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Formation"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#ModuleProgrammation -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#ModuleProgrammation">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Module"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#ProgrammationAvancee -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#ProgrammationAvancee">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Cours"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#VideoAlgorithmique -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#VideoAlgorithmique">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amine/ontologies/2026/8/untitled-ontology-3#Video"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+
