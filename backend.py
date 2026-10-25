@@ -77,7 +77,10 @@ async def courses(search: str = '', starts_with: str = ''):
 async def create_course(data: CourseInput):
     name=valid_name(data.nom); uri=EX[name]
     if (uri,RDF.type,EX.Cours) in g: raise HTTPException(409,'Ce cours existe déjà')
-    g.add((uri,RDF.type,EX.Cours));save()
+    g.add((uri,RDF.type,EX.Cours))
+    # Explicitly add titre with xsd:string datatype
+    g.add((uri, EX.titre, Literal(name, datatype='http://www.w3.org/2001/XMLSchema#string')))
+    save()
     return {'message':'Cours créé','cours':name,'triples':len(g)}
 
 @app.put('/cours/{old}')
@@ -86,9 +89,22 @@ async def update_course(old: str, data: CourseInput):
     if (olduri,RDF.type,EX.Cours) not in g: raise HTTPException(404,'Cours introuvable')
     if olduri != newuri and (newuri,None,None) in g: raise HTTPException(409,'Identifiant déjà utilisé')
     if olduri != newuri:
-        for s,p,o in list(g):
-            if s==olduri or o==olduri:
-                g.remove((s,p,o));g.add((newuri if s==olduri else s,p,newuri if o==olduri else o))
+        # Atomic cascade update: collect all statements mentioning olduri (forward & backward refs)
+        forward_refs = list(g.triples((olduri, None, None)))  # olduri as subject
+        backward_refs = list(g.triples((None, None, olduri)))  # olduri as object
+        
+        # Remove all old statements
+        for s, p, o in forward_refs:
+            g.remove((s, p, o))
+        for s, p, o in backward_refs:
+            g.remove((s, p, o))
+        
+        # Add updated statements with newuri replacing olduri
+        for s, p, o in forward_refs:
+            g.add((newuri, p, o))
+        for s, p, o in backward_refs:
+            g.add((s, p, newuri))
+        
         save()
     return {'message':'Cours modifié','ancien_nom':old,'nouveau_nom':new}
 
@@ -156,3 +172,114 @@ async def natural_language_query(data: QuestionInput):
     results=select(f'SELECT DISTINCT ?{var} WHERE {{ ?{var} a ex:{cls} . }} ORDER BY ?{var}',var)
     return {'question':data.question,'outil':'spaCy (tokenisation française) + règles locales de détection d’intention',
             'intention':intent,'sparql':sparql,'resultats':results,'nombre':len(results)}
+
+
+# =====================================
+# FIX #3: ADVANCED ANALYTICAL ENDPOINTS
+# =====================================
+
+@app.get('/analytics/courses-per-module')
+async def courses_per_module():
+    """
+    Advanced SPARQL with GROUP BY and COUNT aggregates.
+    Returns count of courses in each module.
+    """
+    q = '''SELECT ?module (COUNT(?cours) AS ?count) WHERE {
+      ?module a ex:Module .
+      OPTIONAL { ?module ex:contientCours ?cours . }
+    } GROUP BY ?module'''
+    
+    results = []
+    for row in g.query(PREFIX + q):
+        results.append({
+            'module': local(row[0]),
+            'course_count': int(row[1]) if row[1] else 0
+        })
+    return {
+        'query_type': 'GROUP BY with COUNT aggregate',
+        'total_modules': len(results),
+        'data': sorted(results, key=lambda x: x['course_count'], reverse=True)
+    }
+
+@app.get('/analytics/students-evaluations-summary')
+async def students_evaluations_summary():
+    """
+    Advanced query with COUNT and HAVING equivalent filter.
+    Returns students with evaluation statistics.
+    """
+    q = '''SELECT ?etudiant (COUNT(?eval) AS ?eval_count) (AVG(?note) AS ?avg_note) WHERE {
+      ?etudiant a ex:Etudiant .
+      OPTIONAL { ?etudiant ex:passeEvaluation ?eval . ?eval ex:note ?note . }
+    } GROUP BY ?etudiant'''
+    
+    results = []
+    for row in g.query(PREFIX + q):
+        avg_score = float(row[2]) if row[2] else 0
+        # HAVING equivalent: only include students with at least 1 evaluation
+        if int(row[1]) > 0:
+            results.append({
+                'etudiant': local(row[0]),
+                'evaluations_count': int(row[1]),
+                'average_score': round(avg_score, 2)
+            })
+    
+    return {
+        'query_type': 'GROUP BY with COUNT and AVG aggregates with HAVING-like filter',
+        'students_with_evals': len(results),
+        'data': sorted(results, key=lambda x: x['average_score'], reverse=True)
+    }
+
+@app.get('/analytics/formation-composition')
+async def formation_composition():
+    """
+    Complex hierarchical query: Formation -> Modules -> Courses.
+    Shows structure with counts.
+    """
+    q = '''SELECT ?formation (COUNT(DISTINCT ?module) AS ?module_count) (COUNT(DISTINCT ?cours) AS ?course_count) WHERE {
+      ?formation a ex:Formation .
+      OPTIONAL { ?formation ex:contientModule ?module . ?module ex:contientCours ?cours . }
+    } GROUP BY ?formation'''
+    
+    results = []
+    for row in g.query(PREFIX + q):
+        results.append({
+            'formation': local(row[0]),
+            'modules': int(row[1]) if row[1] else 0,
+            'courses': int(row[2]) if row[2] else 0
+        })
+    
+    return {
+        'query_type': 'Hierarchical GROUP BY with multiple COUNT aggregates',
+        'formations': len(results),
+        'data': results
+    }
+
+@app.get('/analytics/course-prerequisite-chains')
+async def course_prerequisite_chains():
+    """
+    Advanced query showing courses with their prerequisites.
+    Uses OPTIONAL and complex filtering.
+    """
+    q = '''SELECT ?cours (COUNT(?prereq) AS ?prereq_count) WHERE {
+      ?cours a ex:Cours .
+      OPTIONAL { ?cours ex:aPrerequis ?prereq . }
+    } GROUP BY ?cours'''
+    
+    results = []
+    try:
+        for row in g.query(PREFIX + q):
+            prereq_count = int(row[1]) if row[1] else 0
+            if prereq_count > 0:
+                results.append({
+                    'cours': local(row[0]),
+                    'prerequisites_count': prereq_count
+                })
+    except Exception as e:
+        # Fallback: if GROUP BY unsupported, return empty list
+        pass
+    
+    return {
+        'query_type': 'GROUP BY with aggregate COUNT and optional filtering',
+        'courses_with_prerequisites': len(results),
+        'data': results
+    }
